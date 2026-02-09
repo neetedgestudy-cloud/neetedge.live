@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NEET Edge | Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="font-family:Arial; background:#0f172a; color:white; padding:20px;">
+
+  <h1>Welcome to NEET EDGE 🚀</h1>
+  <p>Clarity se Selection Tak</p>
+
+  <hr style="margin:20px 0;">
+
+  <h3>📘 Free Notes</h3>
+  <p>Coming soon…</p>
+
+  <h3>🎥 Free Classes</h3>
+  <p>YouTube links yahan honge</p>
+
+  <h3>🧪 Practice & Tests</h3>
+  <p>MCQs aur practice material</p>
+
+  <br>
+  <button onclick="logout()">Logout</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCX3c2j4XrZUhA3DlPO8M4Q5EUa21dnkro",
+      authDomain: "neet-edge-7c52f.firebaseapp.com",
+      projectId: "neet-edge-7c52f",
+      storageBucket: "neet-edge-7c52f.appspot.com",
+      messagingSenderId: "324607705560",
+      appId: "1:324607705560:web:cac501d558e50ca164f2ad"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.logout = () => {
+      signOut(auth).then(() => {
+        window.location.href = "index.html";
+      });
+    };
+  </script>
+
+</body>
+</html>
