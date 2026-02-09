@@ -1,40 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login | NEET Edge</title>
   <meta charset="UTF-8">
+  <title>Login | NEET Edge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body style="
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
   background:#020617;
   color:white;
-  font-family:Arial;
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
 ">
 
-<div style="background:#0f172a; padding:30px; width:300px;">
+<div style="
+  background:#0f172a;
+  padding:30px;
+  width:320px;
+  border-radius:10px;
+  text-align:center;
+">
 
   <h2>NEET EDGE</h2>
+  <p style="color:#94a3b8;">Login / Register</p>
 
   <input id="email" type="email" placeholder="Email"
-    style="width:100%; padding:10px; margin:10px 0;">
+    style="width:100%; padding:10px; margin:10px 0; border-radius:5px; border:none;">
 
   <input id="password" type="password" placeholder="Password"
-    style="width:100%; padding:10px; margin:10px 0;">
+    style="width:100%; padding:10px; margin:10px 0; border-radius:5px; border:none;">
 
   <button type="button" onclick="login()"
-    style="width:100%; padding:10px;">Login</button>
+    style="width:100%; padding:12px; margin-top:10px; background:#22c55e; border:none; border-radius:5px; font-size:16px;">
+    Login
+  </button>
 
   <button type="button" onclick="register()"
-    style="width:100%; padding:10px; margin-top:10px;">Register</button>
+    style="width:100%; padding:12px; margin-top:10px; background:#3b82f6; border:none; border-radius:5px; font-size:16px;">
+    Register
+  </button>
 
-  <p id="msg"></p>
-
+  <p id="msg" style="margin-top:15px; color:#fbbf24;"></p>
 </div>
 
+<!-- 🔥 FIREBASE SCRIPT (END MEIN HI RAHE) -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
   import {
@@ -43,6 +56,7 @@
     createUserWithEmailAndPassword
   } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
+  // 🔑 FIREBASE CONFIG
   const firebaseConfig = {
     apiKey: "AIzaSyCX3c2j4XrZUhA3DlPO8M4Q5EUa21dnkro",
     authDomain: "neet-edge-7c52f.firebaseapp.com",
@@ -59,18 +73,40 @@
   const password = document.getElementById("password");
   const msg = document.getElementById("msg");
 
-  window.login = () => {
-    msg.innerText = "Trying login...";
+  // 🔐 LOGIN FUNCTION
+  window.login = function () {
+    msg.innerText = "Logging in...";
     signInWithEmailAndPassword(auth, email.value, password.value)
-      .then(() => msg.innerText = "Login successful ✅")
-      .catch(err => msg.innerText = err.message);
+      .then(() => {
+        msg.innerText = "Login successful ✅";
+        window.location.href = "home.html"; // 🔁 REDIRECT
+      })
+      .catch(error => {
+        if (error.code === "auth/user-not-found") {
+          msg.innerText = "User not found ❌ Please Register";
+        } else if (error.code === "auth/wrong-password") {
+          msg.innerText = "Wrong password ❌";
+        } else {
+          msg.innerText = error.message;
+        }
+      });
   };
 
-  window.register = () => {
+  // 📝 REGISTER FUNCTION
+  window.register = function () {
     msg.innerText = "Registering...";
     createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then(() => msg.innerText = "Registered successfully ✅")
-      .catch(err => msg.innerText = err.message);
+      .then(() => {
+        msg.innerText = "Registration successful ✅";
+        window.location.href = "home.html"; // 🔁 REDIRECT
+      })
+      .catch(error => {
+        if (error.code === "auth/email-already-in-use") {
+          msg.innerText = "Already registered ❗ Please Login";
+        } else {
+          msg.innerText = error.message;
+        }
+      });
   };
 </script>
 
