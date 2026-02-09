@@ -2,93 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NEET EDGE | Learn Smart</title>
-  <style>
-  .top-logo {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    z-index: 999;
-  }
-  </style>
+  <title>NEET EDGE | Clarity se Selection Tak</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: white;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    /* 🔝 HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 2px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
+    }
+
+    /* 🔵 Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      object-fit: cover;
+    }
+
+    .logo span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* 🔐 Auth Buttons */
+    .auth-buttons a {
+      text-decoration: none;
+      padding: 10px 18px;
+      margin-left: 10px;
+      border-radius: 6px;
+      font-size: 16px;
+      border: 2px solid #000;
+      color: #000;
+    }
+
+    .auth-buttons a.login {
+      background: #000;
+      color: #fff;
+    }
+
+    .auth-buttons a:hover {
+      opacity: 0.85;
+    }
+
+    /* 🎞️ BANNER */
+    .banner {
+      background: #f3f4f6;
+      padding: 40px 20px;
+      text-align: center;
+      animation: slide 12s infinite;
+    }
+
+    @keyframes slide {
+      0% { content: "Free NEET Preparation"; }
+      50% { content: "Concept Clarity + Practice"; }
+      100% { content: "Selection Oriented Study"; }
+    }
+
+    /* 🏷️ TAGLINE */
+    .tagline {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      margin: 40px 20px;
+    }
+
+    /* 📦 FEATURES */
+    .features {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-box {
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 30px;
       text-align: center;
     }
 
-    header {
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 40px;
+    .feature-box h3 {
+      font-size: 22px;
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 18px;
-      color: #cbd5f5;
-    }
-
-    .btn-box {
-      margin-top: 40px;
-    }
-
-    button {
-      padding: 14px 28px;
-      margin: 10px;
+    .feature-box p {
       font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      color: #333;
     }
 
-    .login {
-      background: #22c55e;
-      color: black;
-    }
-
-    .register {
-      background: #3b82f6;
-      color: white;
-    }
-
+    /* 🔻 FOOTER */
     footer {
-      margin-top: 60px;
+      margin-top: 50px;
+      background: #000;
+      color: #fff;
+      padding: 30px 20px;
+    }
+
+    footer .footer-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
       font-size: 14px;
-      color: #94a3b8;
+    }
+
+    footer a:hover {
+      color: #fff;
     }
   </style>
 </head>
 
 <body>
-  <!-- TOP RIGHT LOGO -->
-<img src="file_0000000071e072079070431c3cbc5547.png" class="top-logo">
 
+  <!-- 🔝 HEADER -->
   <header>
-    <h1>NEET EDGE</h1>
-    <p>Clarity se Selection Tak 🚀</p>
+    <div class="logo">
+      <img src="logo.png" alt="NEET EDGE">
+      <span>NEET EDGE</span>
+    </div>
 
-    <div class="btn-box">
-      <a href="login.html"><button class="login">Login</button></a>
-      <a href="login.html"><button class="register">Register</button></a>
+    <div class="auth-buttons">
+      <a href="login.html" class="login">Login</a>
+      <a href="login.html">Register</a>
     </div>
   </header>
 
+  <!-- 🎞️ BANNER -->
+  <div class="banner">
+    <h2>India’s Free NEET Learning Platform</h2>
+  </div>
+
+  <!-- 🏷️ TAGLINE -->
+  <div class="tagline">
+    CLARITY SE SELECTION TAK
+  </div>
+
+  <!-- 📦 FEATURES -->
+  <section class="features">
+    <div class="feature-box">
+      <h3>📄 10 Million+ Tests</h3>
+      <p>Simple papers & exam-oriented practice</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>🧠 24×7 Doubt Solving</h3>
+      <p>Ask doubts anytime, anywhere</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>🎥 Daily Free Videos</h3>
+      <p>Concept clarity with daily lectures</p>
+    </div>
+  </section>
+
+  <!-- 🔻 FOOTER -->
   <footer>
-    © 2026 NEET EDGE | Student-Driven Learning Platform
+    <div class="footer-grid">
+      <div>
+        <h4>Help</h4>
+        <a href="#">Support</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <a href="#">Email</a>
+        <a href="#">Telegram</a>
+      </div>
+
+      <div>
+        <h4>Policy</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
   </footer>
 
 </body>
