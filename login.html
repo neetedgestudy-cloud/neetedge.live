@@ -1,86 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Login | NEET Edge</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    body {
-      background: #020617;
-      font-family: Arial;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .card {
-      background: #0f172a;
-      padding: 30px;
-      width: 320px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 5px;
-      background: #22c55e;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .signup {
-      background: #3b82f6;
-    }
-
-    p {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-  </style>
 </head>
 
-<body>
+<body style="
+  font-family: Arial;
+  background:#020617;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+">
 
-<div class="card">
+<div style="
+  background:#0f172a;
+  padding:30px;
+  width:320px;
+  border-radius:10px;
+  text-align:center;
+">
+
   <h2>NEET EDGE</h2>
 
-  <input id="email" type="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
+  <input id="email" type="email" placeholder="Email"
+    style="width:100%; padding:10px; margin:10px 0;">
+  <input id="password" type="password" placeholder="Password"
+    style="width:100%; padding:10px; margin:10px 0;">
 
-  <button type="button" onclick="login()">Login</button>
-  <button type="button" class="signup" onclick="signup()">Register</button>
+  <button type="button" onclick="login()"
+    style="width:100%; padding:12px; background:#22c55e; border:none; margin-top:10px;">
+    Login
+  </button>
 
-  <p id="msg"></p>
+  <button type="button" onclick="register()"
+    style="width:100%; padding:12px; background:#3b82f6; border:none; margin-top:10px;">
+    Register
+  </button>
+
+  <p id="msg" style="margin-top:15px; color:#fbbf24;"></p>
 </div>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
   import {
     getAuth,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword
-  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+  } from
+    "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCX3c2j4XrZUhA3DlPO8M4Q5EUa21dnkro",
@@ -98,16 +70,38 @@
   const password = document.getElementById("password");
   const msg = document.getElementById("msg");
 
-  window.signup = () => {
-    createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then(() => msg.innerText = "Register successful ✅")
-      .catch(err => msg.innerText = err.message);
+  // 🔐 LOGIN ONLY IF USER EXISTS
+  window.login = () => {
+    msg.innerText = "Checking login...";
+    signInWithEmailAndPassword(auth, email.value, password.value)
+      .then(() => {
+        msg.innerText = "Login successful ✅";
+      })
+      .catch(error => {
+        if (error.code === "auth/user-not-found") {
+          msg.innerText = "Registration not found ❌ Please Register";
+        } else if (error.code === "auth/wrong-password") {
+          msg.innerText = "Wrong password ❌";
+        } else {
+          msg.innerText = error.message;
+        }
+      });
   };
 
-  window.login = () => {
-    signInWithEmailAndPassword(auth, email.value, password.value)
-      .then(() => msg.innerText = "Login successful ✅")
-      .catch(err => msg.innerText = err.message);
+  // 📝 REGISTER NEW USER
+  window.register = () => {
+    msg.innerText = "Registering...";
+    createUserWithEmailAndPassword(auth, email.value, password.value)
+      .then(() => {
+        msg.innerText = "Registration successful ✅ Now Login";
+      })
+      .catch(error => {
+        if (error.code === "auth/email-already-in-use") {
+          msg.innerText = "Already registered ❗ Please Login";
+        } else {
+          msg.innerText = error.message;
+        }
+      });
   };
 </script>
 
