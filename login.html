@@ -1,31 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login | NEET Edge</title>
   <meta charset="UTF-8">
+  <title>Login | NEET Edge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      background: #020617;
+      font-family: Arial;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #0f172a;
+      padding: 30px;
+      width: 320px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #22c55e;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .signup {
+      background: #3b82f6;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+  </style>
 </head>
 
-<body style="font-family:Arial; text-align:center; padding:40px;">
+<body>
 
-  <h1>NEET EDGE</h1>
-  <h3>Login</h3>
+<div class="card">
+  <h2>NEET EDGE</h2>
 
-  <button type="button" onclick="signup()">Register</button>
-<button type="button" onclick="login()">Login</button>
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
 
-  <button>Login</button>
-  <button>Sign Up</button>
+  <button type="button" onclick="login()">Login</button>
+  <button type="button" class="signup" onclick="signup()">Register</button>
 
-  <p style="margin-top:20px;">
-    🔙 <a href="index.html">Back to Home</a>
-  </p>
+  <p id="msg"></p>
+</div>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
-    from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword
+  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
-  // 🔥 YAHAN APNA FIREBASE CONFIG PASTE KARNA HAI 🔥
   const firebaseConfig = {
     apiKey: "AIzaSyCX3c2j4XrZUhA3DlPO8M4Q5EUa21dnkro",
     authDomain: "neet-edge-7c52f.firebaseapp.com",
@@ -38,17 +94,22 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  window.signup = function () {
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const msg = document.getElementById("msg");
+
+  window.signup = () => {
     createUserWithEmailAndPassword(auth, email.value, password.value)
       .then(() => msg.innerText = "Register successful ✅")
       .catch(err => msg.innerText = err.message);
   };
 
-  window.login = function () {
+  window.login = () => {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then(() => msg.innerText = "Login successful ✅")
       .catch(err => msg.innerText = err.message);
   };
 </script>
+
 </body>
 </html>
