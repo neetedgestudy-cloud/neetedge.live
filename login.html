@@ -76,6 +76,7 @@
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then(() => {
         msg.innerText = "Login successful ✅";
+        window.location.href = "home.html";
       })
       .catch(error => {
         if (error.code === "auth/user-not-found") {
@@ -94,7 +95,10 @@
     createUserWithEmailAndPassword(auth, email.value, password.value)
       .then(() => {
         msg.innerText = "Registration successful ✅ Now Login";
-      })
+        .then(() => {
+  msg.innerText = "Registration successful ✅";
+  window.location.href = "home.html";
+});
       .catch(error => {
         if (error.code === "auth/email-already-in-use") {
           msg.innerText = "Already registered ❗ Please Login";
