@@ -136,7 +136,50 @@
     footer a:hover {
       color: #fff;
     }
+
+    .profile-menu {
+  position: relative;
+}
+
+.profile-pic {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 55px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  min-width: 150px;
+  z-index: 2000;
+}
+
+.dropdown a {
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+.dropdown a:hover {
+  background: #f3f4f6;
+}
   </style>
+
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("dropdown");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+  </script>
 </head>
 
 <body>
@@ -148,11 +191,13 @@
       <span>NEET EDGE</span>
     </div>
 
-    <div class="user-profile">
-      <!-- profile page baad me banayenge -->
-      <a href="#">
-        <img src="https://i.imgur.com/6VBx3io.png" alt="User">
-      </a>
+    <div class="profile-menu">
+  <img src="https://i.imgur.com/6VBx3io.png" class="profile-pic" onclick="toggleMenu()">
+
+  <div id="dropdown" class="dropdown">
+    <a href="profile.html">My Profile</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
     </div>
   </header>
 
