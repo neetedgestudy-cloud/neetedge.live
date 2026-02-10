@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile | NEET EDGE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #000;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    header img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      margin-right: 10px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 2px solid #000;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="logo.png">
+    <strong>NEET EDGE – My Profile</strong>
+  </header>
+
+  <div class="container">
+    <h2>Account Settings</h2>
+
+    <label>Name</label>
+    <input type="text" placeholder="Enter your name">
+
+    <label>Class</label>
+    <select>
+      <option>11</option>
+      <option>12</option>
+      <option>Dropper</option>
+    </select>
+
+    <label>Target Exam</label>
+    <select>
+      <option>NEET</option>
+      <option>NEET + Boards</option>
+    </select>
+
+    <label>Phone Number</label>
+    <input type="tel" placeholder="+91 XXXXXXXX">
+
+    <label>About You</label>
+    <textarea rows="4" placeholder="Your goals, preparation status..."></textarea>
+
+    <button>Save Changes</button>
+  </div>
+
+</body>
+</html>
