@@ -47,3 +47,4 @@ window.protectPage = function () {
     if (!user) location.href = "login.html";
   });
 };
+
