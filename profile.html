@@ -5,6 +5,8 @@
   <title>My Profile | NEET EDGE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <input type="text" id="phone" disabled>
+
   <style>
     body {
       margin: 0;
@@ -140,6 +142,12 @@
     window.location.href = "login.html";
   } else {
     document.getElementById("email").value = user.email;
+  }
+});
+
+    onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById("phone").value = user.phoneNumber;
   }
 });
   </script>
