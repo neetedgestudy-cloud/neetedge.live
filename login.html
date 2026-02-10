@@ -41,10 +41,15 @@
   const auth = getAuth(app);
 
   window.recaptchaVerifier = new RecaptchaVerifier(
-    auth,
-    'recaptcha-container',
-    { size: 'normal' }
-  );
+  auth,
+  'recaptcha-container',
+  {
+    size: 'invisible',
+    callback: () => {
+      console.log("reCAPTCHA solved");
+    }
+  }
+);
 
   window.sendOTP = () => {
     const phone = document.getElementById("phone").value;
