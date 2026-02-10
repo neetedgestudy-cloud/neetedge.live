@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onload="protectPage()">
 
 <div class="header">
   <div class="logo"><img src="logo.png"> NEET EDGE</div>
@@ -18,9 +18,6 @@
   </div>
 </div>
 
-<script type="module">
-import {auth,onAuthStateChanged} from "./js/auth.js";
-onAuthStateChanged(auth,u=>{if(!u)location.href="login.html"});
-</script>
+<script type="module" src="js/auth.js"></script>
 </body>
 </html>
