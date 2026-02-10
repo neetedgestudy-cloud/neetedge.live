@@ -7,6 +7,24 @@
 
   <input type="text" id="phone" disabled>
 
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCX3c2j4XrZUhA3DlPO8M4Q5EUa21dnkro",
+  authDomain: "neet-edge-7c52f.firebaseapp.com",
+  projectId: "neet-edge-7c52f"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) window.location.href = "login.html";
+});
+</script>
+
   <style>
     body {
       margin: 0;
