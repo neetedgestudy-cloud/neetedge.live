@@ -2,155 +2,230 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NEET EDGE | Home</title>
+  <title>NEET EDGE | Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
       background: #ffffff;
       color: #000000;
     }
 
-    /* 🔵 Top Left Logo */
-    .corner-logo {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #000;
-      background: #fff;
+    /* 🔝 TOP BAR */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 2px solid #e5e7eb;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
 
-    /* 🔷 Header */
-    .header {
-      text-align: center;
-      padding: 80px 20px 40px;
-      border-bottom: 2px solid #e5e7eb;
+    /* 🔵 Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      object-fit: cover;
     }
 
-    .header p {
-      font-size: 18px;
-      color: #444;
+    .logo span {
+      font-size: 20px;
+      font-weight: bold;
     }
 
-    /* 📦 Sections */
+    /* 👤 User profile */
+    .user-profile img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    /* 📦 MAIN CONTENT */
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
       padding: 40px 20px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    /* 🧩 Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     .card {
       border: 2px solid #000;
       border-radius: 10px;
       padding: 30px;
-      margin-bottom: 25px;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    .card h2 {
-      font-size: 26px;
+    .card:hover {
+      background: #f3f4f6;
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      font-size: 22px;
       margin-bottom: 10px;
     }
 
     .card p {
-      font-size: 18px;
+      font-size: 16px;
       color: #333;
     }
 
-    /* 🚪 Logout Button */
-    .logout {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      font-size: 18px;
+    /* 🔻 FOOTER */
+    footer {
       background: #000;
       color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 30px 20px;
     }
 
-    .logout:hover {
-      background: #333;
+    footer .footer-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    footer a:hover {
+      color: #fff;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🔵 Left Top Corner Logo -->
-  <img src="file_0000000071e072079070431c3cbc5547.png" class="corner-logo" alt="NEET EDGE Logo">
+  <!-- 🔝 HEADER -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="NEET EDGE">
+      <span>NEET EDGE</span>
+    </div>
 
-  <!-- 🔷 Header -->
-  <div class="header">
-    <h1>NEET EDGE</h1>
-    <p>Clarity se Selection Tak</p>
-  </div>
+    <div class="user-profile">
+      <!-- profile page baad me banayenge -->
+      <a href="#">
+        <img src="https://i.imgur.com/6VBx3io.png" alt="User">
+      </a>
+    </div>
+  </header>
 
-  <!-- 📦 Main Content -->
+  <!-- 📦 MAIN -->
   <div class="container">
 
-    <div class="card">
-      <h2>📘 Free Notes</h2>
-      <p>High-quality NEET notes (Physics, Chemistry, Biology). Coming soon…</p>
+    <!-- 🎥 LECTURES -->
+    <div class="section">
+      <h2>🎥 Lectures</h2>
+      <div class="cards">
+        <div class="card" onclick="alert('Lectures page coming soon')">
+          <h3>Daily Live Classes</h3>
+          <p>Concept clarity with structured lectures</p>
+        </div>
+
+        <div class="card" onclick="alert('Recorded lectures coming soon')">
+          <h3>Recorded Videos</h3>
+          <p>Revise anytime with recorded sessions</p>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>🎥 Free Classes</h2>
-      <p>YouTube based free lectures with clear concepts.</p>
+    <!-- 🧪 MCQ & PRACTICE -->
+    <div class="section">
+      <h2>🧪 MCQ & Question Practice</h2>
+      <div class="cards">
+        <div class="card" onclick="alert('MCQ section coming soon')">
+          <h3>Topic-wise MCQs</h3>
+          <p>Practice NEET level MCQs daily</p>
+        </div>
+
+        <div class="card" onclick="alert('Practice questions coming soon')">
+          <h3>Practice Questions</h3>
+          <p>Strengthen concepts with questions</p>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>🧪 Practice & Tests</h2>
-      <p>MCQs, practice questions and topic-wise tests.</p>
+    <!-- 🧠 DOUBT SOLVING -->
+    <div class="section">
+      <h2>🧠 Doubt Solving</h2>
+      <div class="cards">
+        <div class="card" onclick="alert('Doubt section coming soon')">
+          <h3>Ask Your Doubts</h3>
+          <p>24×7 doubt solving support</p>
+        </div>
+      </div>
     </div>
-
-    <button class="logout" onclick="logout()">Logout</button>
 
   </div>
 
-  <!-- 🔥 Firebase Auth Protection -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+  <!-- 🔻 FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Help</h4>
+        <a href="#">Support</a>
+        <a href="#">FAQs</a>
+      </div>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCX3c2j4XrZUhA3DlPO8M4Q5EUa21dnkro",
-      authDomain: "neet-edge-7c52f.firebaseapp.com",
-      projectId: "neet-edge-7c52f",
-      storageBucket: "neet-edge-7c52f.appspot.com",
-      messagingSenderId: "324607705560",
-      appId: "1:324607705560:web:cac501d558e50ca164f2ad"
-    };
+      <div>
+        <h4>Contact</h4>
+        <a href="#">Email</a>
+        <a href="#">Telegram</a>
+      </div>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    // 🔒 Protect Home Page
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = "login.html";
-      }
-    });
-
-    // 🚪 Logout
-    window.logout = () => {
-      signOut(auth).then(() => {
-        window.location.href = "index.html";
-      });
-    };
-  </script>
+      <div>
+        <h4>Policy</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
