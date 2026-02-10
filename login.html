@@ -1,59 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login | NEET EDGE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/style.css">
+<title>Login</title>
 </head>
 <body>
 
-<h2>Login</h2>
+<div class="form">
+  <h2>Login / Register</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <button onclick="register()">Register</button>
+  <p id="msg"></p>
+</div>
 
-<input type="email" id="email" placeholder="Enter Email"><br><br>
-<input type="password" id="password" placeholder="Enter Password"><br><br>
-
-<button onclick="login()">Login</button>
-<p id="msg"></p>
-
-<hr>
-
-<h3>New user?</h3>
-<button onclick="register()">Register</button>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword }
-  from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCX3c2j4XrZUhA3DlPO8M4Q5EUa21dnkro",
-    authDomain: "neet-edge-7c52f.firebaseapp.com",
-    projectId: "neet-edge-7c52f",
-    storageBucket: "neet-edge-7c52f.appspot.com",
-    messagingSenderId: "324607705560",
-    appId: "1:324607705560:web:cac501d558e50ca164f2ad"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  window.login = () => {
-    const email = email.value;
-    const pass = password.value;
-
-    signInWithEmailAndPassword(auth, email, pass)
-      .then(() => window.location.href = "home.html")
-      .catch(err => msg.innerText = err.message);
-  };
-
-  window.register = () => {
-    const email = email.value;
-    const pass = password.value;
-
-    createUserWithEmailAndPassword(auth, email, pass)
-      .then(() => window.location.href = "home.html")
-      .catch(err => msg.innerText = err.message);
-  };
-</script>
-
+<script type="module" src="js/auth.js"></script>
 </body>
 </html>
