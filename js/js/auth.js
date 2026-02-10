@@ -14,22 +14,36 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const auth = getAuth(app);
 
-window.login = () => {
-  signInWithEmailAndPassword(auth,email.value,password.value)
-  .then(()=>location.href="home.html")
-  .catch(e=>msg.innerText=e.message);
+/* 🔑 LOGIN */
+window.login = function () {
+  const email = document.getElementById("email").value;
+  const pass  = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, email, pass)
+    .then(() => location.href = "home.html")
+    .catch(err => document.getElementById("msg").innerText = err.message);
 };
 
-window.register = () => {
-  createUserWithEmailAndPassword(auth,email.value,password.value)
-  .then(()=>location.href="home.html")
-  .catch(e=>msg.innerText=e.message);
+/* 📝 REGISTER */
+window.register = function () {
+  const email = document.getElementById("email").value;
+  const pass  = document.getElementById("password").value;
+
+  createUserWithEmailAndPassword(auth, email, pass)
+    .then(() => location.href = "home.html")
+    .catch(err => document.getElementById("msg").innerText = err.message);
 };
 
-window.logout = () => {
-  signOut(auth).then(()=>location.href="login.html");
+/* 🚪 LOGOUT */
+window.logout = function () {
+  signOut(auth).then(() => location.href = "login.html");
 };
 
-export { onAuthStateChanged };
+/* 🔒 PAGE PROTECT */
+window.protectPage = function () {
+  onAuthStateChanged(auth, user => {
+    if (!user) location.href = "login.html";
+  });
+};
